@@ -1,10 +1,15 @@
-describe Player do
+require 'minitest/spec'
+require 'minitest/autorun'
+
+require 'fluxx/player'
+
+describe Fluxx::Player do
   before do
-    @player = Player.new
+    @player = Fluxx::Player.new
   end
 
   it "can be created with no arguments" do
-    @player.must_be_instance_of Player
+    @player.must_be_instance_of Fluxx::Player
   end
 
   it "can be given a card" do

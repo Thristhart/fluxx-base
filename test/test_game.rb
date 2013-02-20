@@ -1,9 +1,11 @@
 require 'minitest/spec'
 require 'minitest/autorun'
 
-describe Game do
+require 'fluxx/game'
+
+describe Fluxx::Game do
   before do
-    @game = Game.new(4)
+    @game = Fluxx::Game.new(4)
   end
 
   describe "when just initialized" do
