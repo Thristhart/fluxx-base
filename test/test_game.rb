@@ -1,3 +1,4 @@
+require 'minitest/spec'
 require 'minitest/autorun'
 
 describe Game do
@@ -20,5 +21,4 @@ describe Game do
       @games.deck.size.must_equal (100-12)
     end
   end
-
 end
