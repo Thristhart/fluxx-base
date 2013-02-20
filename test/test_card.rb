@@ -24,23 +24,28 @@ describe Fluxx::Card do
   end
 
   it "should be of the correct class" do
-    @shackles.is_a Fluxx::Card::Creeper
-    @sloop.is_a Fluxx::Card::Keeper
-    @captain_hat.is_a Fluxx::Card::Keeper
-    @treasure_chest.is_a Fluxx::Card::Goal
+    @shackles.must_be_kind_of Fluxx::Card
+    @sloop.must_be_kind_of Fluxx::Card
+    @captain_hat.must_be_kind_of Fluxx::Card
+    @treasure_chest.must_be_kind_of Fluxx::Card
+
+    @shackles.must_be_instance_of Fluxx::Card::Creeper
+    @sloop.must_be_instance_of Fluxx::Card::Keeper
+    @captain_hat.must_be_instance_of Fluxx::Card::Keeper
+    @treasure_chest.must_be_instance_of Fluxx::Card::Goal
   end
 
   it "should have a name" do
-    @shackles.name == "Shackles"
-    @sloop.name == "Sloop"
-    @captain_hat.name == "Captain's Hat"
-    @treasure_chest.name == "Treasure Chest"
+    @shackles.name.must_equal "Shackles"
+    @sloop.name.must_equal "Sloop"
+    @captain_hat.name.must_equal "Captain's Hat"
+    @treasure_chest.name.must_equal "Treasure Chest"
   end
 
   it "should have a set" do
-    @shackles.set == "Pirate"
-    @sloop.set == "Pirate"
-    @captain_hat.set == "Pirate"
-    @treasure_chest.set == "Pirate"
+    @shackles.set.must_equal "Pirate"
+    @sloop.set.must_equal "Pirate"
+    @captain_hat.set.must_equal "Pirate"
+    @treasure_chest.set.must_equal "Pirate"
   end
 end

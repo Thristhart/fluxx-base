@@ -3,7 +3,7 @@ require 'minitest/autorun'
 
 require 'fluxx/card/keeper'
 
-describe Fluxx::Card do
+describe Fluxx::Card::Keeper do
   before do
     # A keeper with nothing special
     @sloop = Fluxx::Card.create(type: :keeper, name: "Sloop", category: :ship, set: 'Pirate')
@@ -16,7 +16,8 @@ describe Fluxx::Card do
   end
 
   it "should be of the correct class" do
-    @sloop.is_a Fluxx::Card::Keeper
+    @sloop.must_be_kind_of Fluxx::Card
+    @sloop.must_be_instance_of Fluxx::Card::Keeper
   end
 
   it "should have no default category" do
