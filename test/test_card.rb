@@ -5,9 +5,7 @@ require 'fluxx/card'
 
 describe Fluxx::Card do
   before do
-    @shackles = Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.") do |rules, player|
-      player.creepers << self
-    end
+    @shackles = Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.")
 
     # A keeper with nothing special
     @sloop = Fluxx::Card.create(type: :keeper, name: "Sloop", category: :ship, set: 'Pirate')
@@ -18,9 +16,10 @@ describe Fluxx::Card do
       rules.special[:captain] = player
     end
 
-    @treasure_chest = Fluxx::Card.create(type: :goal, name: "Treasure Chest", set: 'Pirate') do |player|
-      player.keepers.include Fluxx::Card["Strongbox"] && player.keepers.select{|card| card.is_a? :booty}.length > 2
-    end
+    @treasure_chest = Fluxx::Card.create(type: :goal, name: "Treasure Chest", set: 'Pirate', goal:{cards:["Strongbox"], booty:2})
+
+    @ruleset = Ruleset.new
+    @player = Player.new
   end
 
   it "is of the correct class" do
@@ -68,6 +67,21 @@ describe Fluxx::Card do
     @sloop.must_respond_to :play
     @captain_hat.must_respond_to :play
     @treasure_chest.must_respond_to :play
+
+    @shackles.play(@ruleset, @player)
+    @player.creepers.must_include @shackles
+
+    @sloop.play(@ruleset, @player)
+    @player.keepers.must_include @sloop
+
+    @captain_hat.play(@ruleset, @player)
+    @player.keepers.must_include @captain_hat
+    @player.title.must_include "Captain"
+    @ruleset.special[:captain].wont_be_null
+
+    @treasure_chest.play(@ruleset, @player)
+    @ruleset.goals.must_include @treasure_chest
+
   end
 
 end
