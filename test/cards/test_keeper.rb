@@ -10,9 +10,12 @@ describe Fluxx::Card::Keeper do
 
     # The captain's hat! Arr, 'matey!
     @captain_hat = Fluxx::Card.create(type: :keeper, name: "Captain's Hat", set: 'Pirate') do |rules, player|
-      player.title << "Captain"
+      player.titles << "Captain"
       rules.special[:captain] = player
     end
+
+    @player = Fluxx::Player.new
+    @ruleset = Fluxx::Ruleset.net
   end
 
   it "should be of the correct class" do
@@ -31,5 +34,21 @@ describe Fluxx::Card::Keeper do
   it "should respond to special" do
     @sloop.respond_to? :special
   end
+
+  it "should go to a player's keepers when played" do
+    @sloop.play(@ruleset, @player)
+    
+    @player.keepers.must_include @sloop
+  end
+  
+  it "should have custom behavior when played" do
+    @captain_hat.play(@ruleset, @player)
+
+    @player.keepers.must_include @captain_hat
+    
+    @ruleset.special[:captain].must_equal @player
+    @player.titles.must_include "Captain"
+  end
+
 end
 

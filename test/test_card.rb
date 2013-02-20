@@ -12,7 +12,7 @@ describe Fluxx::Card do
 
     # The captain's hat! Arr, 'matey!
     @captain_hat = Fluxx::Card.create(type: :keeper, name: "Captain's Hat", set: 'Pirate', description: "Players must call you Captain.") do |rules, player|
-      player.title << "Captain"
+      player.titles << "Captain"
       rules.special[:captain] = player
     end
 
