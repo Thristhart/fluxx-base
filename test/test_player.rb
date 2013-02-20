@@ -12,6 +12,7 @@ describe Fluxx::Player do
     @player.must_be_instance_of Fluxx::Player
     @player.hand.must_equal []
     @player.keepers.must_equal []
+    @player.creepers.must_equal []
     @player.titles.must_equal []
   end
 end
