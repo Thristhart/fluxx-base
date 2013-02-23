@@ -4,11 +4,11 @@ require 'minitest/autorun'
 require 'fluxx/game'
 
 describe Fluxx::Game do
-  before do
-    @game = Fluxx::Game.new(4)
-  end
+  describe "with 4 players" do
+    before do
+      @game = Fluxx::Game.new(4)
+    end
 
-  describe "when just initialized" do
     it "must have 4 players" do
       @game.players.size.must_equal 4
     end
@@ -21,6 +21,14 @@ describe Fluxx::Game do
     
     it "deck size be 12 fewer" do
       @games.deck.size.must_equal (100-12)
+    end
+    
+    it "have a ruleset" do
+      @games.must_respond_to :rules
+    end
+    
+    it "must be able to play a turn" do
+      @games.must_respond_to :turn
     end
   end
 end
