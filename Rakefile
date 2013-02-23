@@ -7,7 +7,7 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
  
-task default: :test
+task default: [:syntax, :test]
 
 desc 'Check syntax of all ruby files'
 task :syntax do
