@@ -10,10 +10,9 @@ describe Fluxx::Player do
 
   it "can be created with no arguments" do
     @player.must_be_instance_of Fluxx::Player
+    @player.hand.must_equal []
+    @player.keepers.must_equal []
+    @player.creepers.must_equal []
+    @player.titles.must_equal []
   end
-
-  it "can be given a card" do
-
-  end
-  
 end
