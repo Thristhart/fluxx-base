@@ -49,7 +49,7 @@ describe Fluxx::Card do
 
   it "must have a type or error" do
     proc {
-      Fluxx::Card.create(name: "Shackles"
+      Fluxx::Card.create(name: "Shackles",
                          set:  'Pirate')
     }.must_raise Fluxx::MissingAttributeError
   end
