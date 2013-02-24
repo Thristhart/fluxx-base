@@ -49,6 +49,16 @@ describe Fluxx::Card::Keeper do
     @ruleset.special[:captain].must_equal @player
     @player.titles.must_include "Captain"
   end
+  
+  it "can be played" do
+    @sloop.play(@ruleset, @player)
+    @player.keepers.must_include @sloop
+
+    @captain_hat.play(@ruleset, @player)
+    @player.keepers.must_include @captain_hat
+    @player.title.must_include "Captain"
+    @ruleset.special[:captain].wont_be_null
+  end
 
 end
 
