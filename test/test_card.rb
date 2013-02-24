@@ -40,4 +40,22 @@ describe Fluxx::Card do
     @player.creepers.must_include @shackles
   end
 
+  it "must have a name or error" do
+    proc {
+      Fluxx::Card.create(type: :goal,
+                         set:  'Pirate')
+    }.must_raise Fluxx::MissingAttributeError
+  end
+
+  it "must have a type or error" do
+    proc {
+      Fluxx::Card.create(name: "Shackles"
+                         set:  'Pirate')
+    }.must_raise Fluxx::MissingAttributeError
+  end
+
+  it "doesn't need a set" do
+    # since we don't define a set in the before, we can use it in this test
+    @shackles.set.must_equal :fluxx
+  end
 end
