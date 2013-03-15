@@ -19,7 +19,7 @@ class Fluxx::Card
 
     @name = options[:name]
     @description = options[:description]
-    @set = options[:set]
+    @set = options[:set] || "Fluxx"
   end
 
   def play(ruleset, player)
