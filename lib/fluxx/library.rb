@@ -1,16 +1,17 @@
 require 'fluxx'
 class Fluxx::Library
-  @@cards = {}
-  def self.Append(card)
-    raise CardAlreadyExistsError if @@cards.include? card.name
-  end
+  def << self
+    @@cards = {}
+    def append(card)
+      raise CardAlreadyExistsError if @@cards.include? card.name
+    end
 
-  def self.[](name)
-    return @@cards[name]
-  end
+    def [](name)
+      return @@cards[name]
+    end
 
-  def clear!
-    @@cards.clear
+    def clear!
+      @@cards.clear
+    end
   end
-
 end
