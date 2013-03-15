@@ -2,17 +2,12 @@ require 'helper'
 require 'fluxx/card/keeper'
 require 'fluxx/player'
 require 'fluxx/ruleset'
+require 'fluxx/library'
 
 describe Fluxx::Card::Keeper do
   before do
     # A keeper with nothing special
-    @sloop = Fluxx::Card.create(type: :keeper, name: "Sloop", category: :ship, set: 'Pirate')
-
-    # The captain's hat! Arr, 'matey!
-    @captain_hat = Fluxx::Card.create(type: :keeper, name: "Captain's Hat", set: 'Pirate') do |rules, player|
-      player.titles << "Captain"
-      rules.special[:captain] = player
-    end
+    @sloop = Fluxx::Library["Sloop"]
 
     @player = Fluxx::Player.new
     @ruleset = Fluxx::Ruleset.net
@@ -21,10 +16,6 @@ describe Fluxx::Card::Keeper do
   it "should be of the correct class" do
     @sloop.must_be_kind_of Fluxx::Card
     @sloop.must_be_instance_of Fluxx::Card::Keeper
-  end
-
-  it "should have no default category" do
-    @captain_hat.category == nil
   end
 
   it "should have a defined category" do
@@ -41,24 +32,8 @@ describe Fluxx::Card::Keeper do
     @player.keepers.must_include @sloop
   end
   
-  it "should have custom behavior when played" do
-    @captain_hat.play(@ruleset, @player)
-
-    @player.keepers.must_include @captain_hat
-    
-    @ruleset.special[:captain].must_equal @player
-    @player.titles.must_include "Captain"
-  end
-  
   it "can be played" do
     @sloop.play(@ruleset, @player)
     @player.keepers.must_include @sloop
-
-    @captain_hat.play(@ruleset, @player)
-    @player.keepers.must_include @captain_hat
-    @player.title.must_include "Captain"
-    @ruleset.special[:captain].wont_be_null
   end
-
 end
-

@@ -29,16 +29,9 @@ describe Fluxx::RuleSet do
       @rules = Fluxx::RuleSet.new
       @player = Fluxx::Player.new
 
-      # A few simple cards
-      @play_4 = Fluxx::Card.create(type: :rule, name: 'Play 4', description: 'Play 4 cards') do |rules, player|
-        rules.play_limit = 4
-      end
-      @play_2 = Fluxx::Card.create(type: :rule, name: 'Play 2', description: 'Play 2 cards') do |rules, player|
-        rules.play_limit = 2
-      end
-      @play_all = Fluxx::Card.create(type: :rule, name: 'Play All', description: 'Play all cards in your hand') do |rules, player|
-        rules.play_limit = 0
-      end
+      @play_4 = Fluxx::Library['Play 4']
+      @play_2 = Fluxx::Library['Play 2']
+      @play_all = Fluxx::Library['Play All']
     end
 
     it "changes the play limit when a rule is played" do
@@ -70,17 +63,9 @@ describe Fluxx::RuleSet do
       @rules = Fluxx::RuleSet.new
       @player = Fluxx::Player.new
 
-      # A couple of simple cards
-      @draw_4 = Fluxx::Card.create(type: :rule, name: 'Draw 4', description: 'Draw 4 cards') do |rules, player|
-        rules.draw_count = 4
-      end
-      @draw_2 = Fluxx::Card.create(type: :rule, name: 'Draw 2', description: 'Draw 2 cards') do |rules, player|
-        rules.draw_count = 2
-      end
-      # This card will throw an error if it is every played
-      @draw_0 = Fluxx::Card.create(type: :rule, name: 'Draw 0', description: 'This card causes errors') do |rules, player|
-        rules.draw_count = 0
-      end
+      @draw_4 = Fluxx::Library['Draw 4']
+      @draw_2 = Fluxx::Library['Draw 2']
+      @draw_all = Fluxx::Library['Draw All']
     end
 
     it "changes the draw limit when a rule is drawed" do
@@ -111,14 +96,8 @@ describe Fluxx::RuleSet do
     before do
       @rules = Fluxx::RuleSet.new
       @player = Fluxx::Player.new
-      @treasure_chest = Fluxx::Card.create(type: :goal,
-                                           name: "Treasure Chest",
-                                           set:  'Pirate',
-                                           goal: { cards:["Strongbox"], booty:2 })
-      @key_lime_pie = Fluxx::Card.create(type: :goal,
-                                         name: "Key Lime Pie",
-                                         set:  'Pirate',
-                                         goal: { cards: ["Key", "Limes"] })
+      @treasure_chest = Fluxx::Library["Treasure Chest"]
+      @key_lime_pie = Fluxx::Library["Key Lime Pie"]
       @player.give @treasure_chest
       @player.give @key_lime_pie
     end

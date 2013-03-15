@@ -3,6 +3,10 @@ require 'fluxx/library'
 require 'fluxx/card'
 
 describe Fluxx::Library do
+  before do
+    Fluxx::Library.clear!
+  end
+
   it "can fetch a card given it's name" do
     # Card.create factory appends the card to the Library
     shackles = Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.")

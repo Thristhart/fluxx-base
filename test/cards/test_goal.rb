@@ -2,32 +2,12 @@ require 'helper'
 require 'fluxx/card/keeper'
 require 'fluxx/player'
 require 'fluxx/ruleset'
+require 'fluxx/library'
 
 describe Fluxx::Card::Keeper do
   before do
-    # An example card that includes a category requirement
-    @treasure_chest = Fluxx::Card.create(type: :goal,
-                                         name: "Treasure Chest",
-                                         set:  'Pirate',
-                                         goal: { cards:["Strongbox"], booty:2 })
-
-    # The only goal in the entire Pirate set that contains an 'or'
-    @munitions = Fluxx::Card.create(type: :goal,
-                                    name: "Munitions",
-                                    set:  'Pirate',
-                                    goal: { either: ["Flintlock Pistol", "Cannon"], cards:["Gunpowder"] })
-
-    # A fairly basic goal
-    @key_lime_pie = Fluxx::Card.create(type: :goal,
-                                       name: "Key Lime Pie",
-                                       set:  'Pirate',
-                                       goal: { cards: ["Key", "Limes"] })
-
-    # This one requires a subset of cards
-    @gems = Fluxx::Card.create(type: :goal,
-                               name: "Gems",
-                               set:  'Pirate',
-                               goal: { needs: [3, "Rubies", "Pearls", "Diamonds", "Emeralds"] })
+    @treasure_chest = Fluxx::Library["Treasure Chest"]
+    @sloop = Fluxx::Library["Sloop"]
 
     @player = Fluxx::Player.new
     @ruleset = Fluxx::Ruleset.net
@@ -59,11 +39,7 @@ describe Fluxx::Card::Keeper do
   it "requires a goal to be defined" do
     proc { 
       Fluxx::Card.create(type: :goal,
-                         name: "Gems",
-                         set:  'Pirate')
+                         name: "Gems")
     }.must_raise Fluxx::MissingAttributeError
   end
-
-
 end
-

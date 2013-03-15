@@ -2,11 +2,12 @@ require 'helper'
 require 'fluxx/card'
 require 'fluxx/ruleset'
 require 'fluxx/player'
+require 'fluxx/library'
 
 describe Fluxx::Card do
   describe "Fully described card" do
     before do
-      @shackles = Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.", set: 'Pirate')
+      @shackles = Fluxx::Library["Shackles"]
 
       @ruleset = Fluxx::Ruleset.new
       @player = Fluxx::Player.new

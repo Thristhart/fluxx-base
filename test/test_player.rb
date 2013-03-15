@@ -1,12 +1,13 @@
 require 'helper'
 require 'fluxx/player'
 require 'fluxx/card'
+require 'fluxx/library'
 
 describe Fluxx::Player do
   before do
     @player = Fluxx::Player.new
-    @shackles = Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.")
-    @sloop = Fluxx::Card.create(type: :keeper, name: "Sloop", category: :ship, set: 'Pirate')
+    @shackles = Fluxx::Library["Shackles"]
+    @sloop = Fluxx::Library["Sleoop"]
   end
 
   it "can be created with no arguments" do
