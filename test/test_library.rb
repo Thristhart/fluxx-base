@@ -36,4 +36,18 @@ describe Fluxx::Library do
     # No exceptions thrown
     Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.")
   end
+
+  it "must not add the card if there is an error" do
+    before_count = Fluxx::Library.count
+    proc {
+      Fluxx::Card.create(type: :goal,
+                         set:  'Pirate')
+    }.must_raise Fluxx::MissingAttributeError
+
+    before_count.must_equal Fluxx::Library.count
+  end
+
+  it "throws an error when it can't find the card" do
+    proc { Fluxx::Library['Trollolololol'] }.must_raise Fluxx::UnknownCardError
+  end
 end
