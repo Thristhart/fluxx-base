@@ -1,4 +1,4 @@
 require 'fluxx'
-class Fluxx::RuleSet
+class Fluxx::Ruleset
 
 end
