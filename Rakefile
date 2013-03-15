@@ -9,6 +9,7 @@ Rake::TestTask.new do |t|
   t.test_files = Dir.glob('test/**/test_*.rb')
   t.verbose = true
   t.ruby_opts << "-rturn"
+  t.libs << 'test'
 end
  
 task default: [:syntax, :test]
