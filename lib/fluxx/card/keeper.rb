@@ -1,6 +1,5 @@
-module Fluxx
-  class Card
-    class Keeper
-    end
+require 'fluxx'
+class Fluxx::Card
+  class Keeper
   end
 end
