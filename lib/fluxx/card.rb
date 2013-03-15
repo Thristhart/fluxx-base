@@ -2,8 +2,13 @@ require 'fluxx'
 class Fluxx::Card
   def self.create(options, play_behavior, cleanup_behavior)
     raise MissingAttributeError unless options[:type] && options[:name]
+    
     type = options.delete :type
-    const_get(type.to_s.capitalize).new(options, play_behavior, cleanup_behavior)
+    card = const_get(type.to_s.capitalize).new(options, play_behavior, cleanup_behavior)
+
+    Fluxx::Library.Append(card)
+
+    return card
   end
 
   def initialize(options, play_behavior, cleanup_behavior)
