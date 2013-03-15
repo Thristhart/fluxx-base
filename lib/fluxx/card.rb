@@ -13,5 +13,12 @@ module Fluxx
       @description = options[:description]
       @set = options[:set]
     end
+
+    def play(ruleset, player)
+      @play_behavior.call(ruleset, player) # the only thing that all card types do
+    end
+    def cleanup(ruleset, player)
+      @cleanup_behavior.call(ruleset, player)
+    end
   end
 end
