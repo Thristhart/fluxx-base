@@ -4,6 +4,7 @@ class Fluxx::Library
     @@cards = {}
     def append(card)
       raise CardAlreadyExistsError if @@cards.include? card.name
+      @@cards[card.name] = card
     end
 
     def [](name)
