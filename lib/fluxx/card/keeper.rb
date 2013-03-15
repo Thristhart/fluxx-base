@@ -1,5 +1,4 @@
 require 'fluxx'
-class Fluxx::Card
-  class Keeper
-  end
+class Fluxx::Card::Keeper
+
 end
