@@ -3,7 +3,7 @@ require 'fluxx/card'
 
 describe Fluxx::Card do
   before do
-    @shackles = Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.")
+    @shackles = Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.", set: 'Pirate')
 
     @ruleset = Fluxx::Ruleset.new
     @player = Fluxx::Player.new
@@ -27,10 +27,6 @@ describe Fluxx::Card do
     @shackles.description.must_equal "You can't win if you have this unless the Goal says otherwise."
   end
 
-  it "has no player" do
-    @shackles.player.must_be_null
-  end
-
   it "can be played" do
     @shackles.must_respond_to :play
 
@@ -52,7 +48,11 @@ describe Fluxx::Card do
     }.must_raise Fluxx::MissingAttributeError
   end
 
-  it "doesn't need a set" do
-    @shackles.set.must_equal :fluxx
+  it "has a default set if no other is specified" do
+    Fluxx::Card.create(type: :rule, name: "Play 2").set.must_equal 'Fluxx'
+  end
+
+  it "optionally has a description" do
+    Fluxx::Card.create(type: :rule, name: "Play 2").description.must_be_nil
   end
 end
