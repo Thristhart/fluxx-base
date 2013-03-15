@@ -4,4 +4,8 @@ module Fluxx
   require 'fluxx/deck'
   require 'fluxx/player'
   require 'fluxx/card'
+
+  class Error < StandardError; end
+
+  class MissingAttributeError < Error; end
 end
