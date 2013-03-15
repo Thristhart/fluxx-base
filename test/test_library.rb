@@ -11,4 +11,11 @@ describe Fluxx::Library do
     # Should be the same card
     other_shackles.must_be_same_as shackles
   end
+
+  describe "can't create the same card twice" do
+    Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.")
+    proc {
+      Fluxx::Card.create(type: :creeper, name: "Shackles", description: "Matches on the card name, ignored!")
+    }.must_raise Fluxx::CardAlreadyExistsError
+  end
 end
