@@ -7,8 +7,8 @@ describe Fluxx::Card do
   before do
     @shackles = Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.")
 
-    @ruleset = Ruleset.new
-    @player = Player.new
+    @ruleset = Fluxx::Ruleset.new
+    @player = Fluxx::Player.new
   end
 
   it "is of the correct class" do
@@ -55,7 +55,6 @@ describe Fluxx::Card do
   end
 
   it "doesn't need a set" do
-    # since we don't define a set in the before, we can use it in this test
     @shackles.set.must_equal :fluxx
   end
 end
