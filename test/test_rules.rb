@@ -107,4 +107,35 @@ describe Fluxx::RuleSet do
     end
   end
 
+  describe "changing the Goal" do
+    before do
+      @rules = Fluxx::RuleSet.new
+      @player = Fluxx::Player.new
+      @treasure_chest = Fluxx::Card.create(type: :goal,
+                                           name: "Treasure Chest",
+                                           set:  'Pirate',
+                                           goal: { cards:["Strongbox"], booty:2 })
+      @key_lime_pie = Fluxx::Card.create(type: :goal,
+                                         name: "Key Lime Pie",
+                                         set:  'Pirate',
+                                         goal: { cards: ["Key", "Limes"] })
+      @player.give @treasure_chest
+      @player.give @key_lime_pie
+    end
+
+    it 'sets the goal' do
+      @player.play @treasure_chest, @rules
+      @rules.goal.must_be_same_as @treasure_chest
+    end
+
+    it 'overrides the goal' do
+      @player.play @treasure_chest, @rules
+      @player.play @key_lime_pie, @rules
+      @rules.goal.must_be_same_as @key_lime_pie
+    end
+
+    it 'may have 2 goals only if Double Agenda is played' do
+      skip "Need to implement Double Agenda first"
+    end
+  end
 end
