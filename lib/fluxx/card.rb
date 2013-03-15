@@ -11,6 +11,8 @@ class Fluxx::Card
     return card
   end
 
+  attr_reader :name, :description, :set
+
   def initialize(options, play_behavior, cleanup_behavior)
     @play_behavior = play_behavior
     @cleanup_behavior = cleanup_behavior
