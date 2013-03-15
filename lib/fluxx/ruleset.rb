@@ -1,5 +1,3 @@
-module Fluxx
-  class RuleSet
+class Fluxx::RuleSet
 
-  end
 end
