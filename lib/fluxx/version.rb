@@ -1,3 +1,4 @@
+require 'fluxx'
 require 'gem/version'
 module Fluxx
   VERSION = '0.0.1'

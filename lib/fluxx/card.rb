@@ -1,3 +1,4 @@
+require 'fluxx'
 class Fluxx::Card
   def self.create(options, play_behavior, cleanup_behavior)
     raise MissingAttributeError unless options[:type] && options[:name]

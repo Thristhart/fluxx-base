@@ -1,3 +1,4 @@
+require 'fluxx'
 class Fluxx:: Game
   def initialize
     @deck = []
