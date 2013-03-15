@@ -1,9 +1,8 @@
 require 'fluxx'
-class Fluxx:: Game
+class Fluxx::Game
   def initialize
     @deck = []
     @players = []
     @ruleset = Ruleset.new()
   end
-
 end
