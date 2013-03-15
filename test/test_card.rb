@@ -1,5 +1,7 @@
 require 'helper'
 require 'fluxx/card'
+require 'fluxx/ruleset'
+require 'fluxx/player'
 
 describe Fluxx::Card do
   describe "Fully described card" do

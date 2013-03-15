@@ -1,5 +1,6 @@
 require 'helper'
 require 'fluxx/player'
+require 'fluxx/card'
 
 describe Fluxx::Player do
   before do

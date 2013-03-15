@@ -1,5 +1,7 @@
 require 'helper'
 require 'fluxx/card/keeper'
+require 'fluxx/player'
+require 'fluxx/ruleset'
 
 describe Fluxx::Card::Keeper do
   before do
