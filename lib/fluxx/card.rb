@@ -6,7 +6,7 @@ class Fluxx::Card
     type = options.delete :type
     card = const_get(type.to_s.capitalize).new(options, play_behavior, cleanup_behavior)
 
-    Fluxx::Library.Append(card)
+    Fluxx::Library.append(card)
 
     return card
   end

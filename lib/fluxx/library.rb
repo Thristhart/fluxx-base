@@ -1,6 +1,6 @@
 require 'fluxx'
 class Fluxx::Library
-  def << self
+  class << self
     @@cards = {}
     def append(card)
       raise CardAlreadyExistsError if @@cards.include? card.name
