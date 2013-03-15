@@ -9,4 +9,8 @@ class Fluxx::Library
     return @@cards[name]
   end
 
+  def clear!
+    @@cards.clear
+  end
+
 end
