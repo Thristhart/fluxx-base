@@ -32,4 +32,14 @@ describe Fluxx::Game do
 
     @game.start
   end
+
+  it "can't start a game twice" do
+    @game.players << Fluxx::Player.new
+    @game.players << Fluxx::Player.new
+    @game.deck = Fluxx::Library.set(:pirate)
+
+    @game.start
+
+    proc { @game.start }.must_raise Fluxx::GameAlreadyStartedError
+  end
 end
