@@ -1,5 +1,7 @@
 require 'helper'
 require 'fluxx/game'
+require 'fluxx/player'
+require 'fluxx/library'
 
 describe Fluxx::Game do
   before do
