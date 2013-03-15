@@ -3,7 +3,9 @@ module Fluxx
   require 'fluxx/version'
   require 'fluxx/game'
   require 'fluxx/player'
-  require 'fluxx/card'
+  require 'fluxx/card/keeper'
+  require 'fluxx/card/goal'
+  require 'fluxx/card/rule'
 
   class Error < StandardError; end
 
