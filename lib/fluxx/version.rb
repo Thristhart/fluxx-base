@@ -1,5 +1,4 @@
-require 'fluxx'
-require 'gem/version'
+require 'rubygems/version'
 module Fluxx
   VERSION = '0.0.1'
 
