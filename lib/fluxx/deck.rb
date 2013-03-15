@@ -1,4 +1,4 @@
-class Fluxx
+module Fluxx
   class Deck
     def initialize(cardset)
       @cards = cardset

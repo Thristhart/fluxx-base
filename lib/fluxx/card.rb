@@ -1,4 +1,4 @@
-class Fluxx
+module Fluxx
   class Card
   end
 end

@@ -1,4 +1,4 @@
-class Fluxx
+module Fluxx
   require 'fluxx/version'
   require 'fluxx/game'
   require 'fluxx/deck'

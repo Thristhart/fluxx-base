@@ -1,4 +1,4 @@
-class Fluxx
+module Fluxx
   class Player
     attr_reader :hand, :id
     def initialize(id)
