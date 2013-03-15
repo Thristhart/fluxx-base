@@ -1,6 +1,4 @@
-require 'minitest/spec'
-require 'minitest/autorun'
-
+require 'helper'
 require 'fluxx/player'
 
 describe Fluxx::Player do

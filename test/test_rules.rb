@@ -1,6 +1,4 @@
-require 'minitest/spec'
-require 'minitest/autorun'
-
+require 'helper'
 require 'fluxx/ruleset'
 require 'fluxx/player'
 require 'fluxx/card'
