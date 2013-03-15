@@ -1,6 +1,4 @@
-require 'minitest/spec'
-require 'minitest/autorun'
-
+require 'helper'
 require 'fluxx/card/keeper'
 
 describe Fluxx::Card::Keeper do

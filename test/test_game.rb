@@ -1,34 +1,45 @@
-require 'minitest/spec'
-require 'minitest/autorun'
-
+require 'helper'
 require 'fluxx/game'
 
 describe Fluxx::Game do
-  describe "with 4 players" do
-    before do
-      @game = Fluxx::Game.new(4)
-    end
+  before do
+    @game = Fluxx::Game.new
+  end
 
-    it "must have 4 players" do
-      @game.players.size.must_equal 4
-    end
-    
-    it "each player has 3 cards" do
-      @game.players.each do |player|
-        player.hand.size.must_equal 3
-      end
-    end
-    
-    it "deck size be 12 fewer" do
-      @games.deck.size.must_equal (100-12)
-    end
-    
-    it "have a ruleset" do
-      @games.must_respond_to :rules
-    end
-    
-    it "must be able to play a turn" do
-      @games.must_respond_to :turn
-    end
+  after do
+    @game.reset!
+  end
+
+  it "starts empty" do
+    @game.players.must_be_empty
+    @game.deck.must_be_empty
+  end
+
+  it "must have at least 2 players before starting or error" do
+    proc { @game.start }.must_raise Fluxx::NotEnoughPlayersError
+  end
+
+  it "must have a deck before starting or error" do
+    @game.players << Fluxx::Player.new
+    @game.players << Fluxx::Player.new
+    proc { @game.start }.must_raise Fluxx::MissingDeckError
+  end
+
+  it "must have at least 2 players and a deck" do
+    @game.players << Fluxx::Player.new
+    @game.players << Fluxx::Player.new
+    @game.deck = Fluxx::Library.set(:pirate)
+
+    @game.start
+  end
+
+  it "can't start a game twice" do
+    @game.players << Fluxx::Player.new
+    @game.players << Fluxx::Player.new
+    @game.deck = Fluxx::Library.set(:pirate)
+
+    @game.start
+
+    proc { @game.start }.must_raise Fluxx::GameAlreadyStartedError
   end
 end
