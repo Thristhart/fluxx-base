@@ -6,5 +6,4 @@ require 'fluxx/game'
 
 before do
   Fluxx::Library.clear!
-  Fluxx::Game.reset!
 end

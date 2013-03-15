@@ -6,6 +6,10 @@ describe Fluxx::Game do
     @game = Fluxx::Game.new
   end
 
+  after do
+    @game.reset!
+  end
+
   it "starts empty" do
     @game.players.must_be_empty
     @game.deck.must_be_empty
