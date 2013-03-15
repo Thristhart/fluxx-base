@@ -1,6 +1,6 @@
 require 'fluxx'
 class Fluxx::Card
-  def self.create(options, play_behavior, cleanup_behavior)
+  def self.create(options, play_behavior=nil, cleanup_behavior=nil)
     raise MissingAttributeError unless options[:type] && options[:name]
     
     type = options.delete :type
