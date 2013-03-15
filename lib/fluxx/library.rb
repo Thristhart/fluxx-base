@@ -1,0 +1,4 @@
+class Fluxx::Library
+
+
+end
