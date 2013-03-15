@@ -54,10 +54,11 @@ describe Fluxx::Card do
   end
 
   it "has a default set if no other is specified" do
-    Fluxx::Card.create(type: :rule, name: "Play 2").set.must_equal 'Fluxx'
+    Fluxx::Library['Minimal'].set.must_equal 'Fluxx'
   end
 
   it "optionally has a description" do
-    Fluxx::Card.create(type: :rule, name: "Play 2").description.must_be_nil
+    Fluxx::Library['Minimal'].description.must_be_nil
   end
+
 end

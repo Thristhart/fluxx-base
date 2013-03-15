@@ -42,3 +42,6 @@ end
 Fluxx::Card.create(type: :rule, name: 'Play All', description: 'Play all cards in your hand') do |rules, player|
   rules.play_limit = 0
 end
+
+# The most basic card, ever. No description, no set, nothing special at all.
+Fluxx::Card.create(type: :keeper, name: 'Minimal')
