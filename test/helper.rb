@@ -6,6 +6,9 @@ require 'minitest/autorun'
 
 require 'fluxx/library'
 
+# Remove any cards the library itself loads, only use the ones we define below
+Fluxx::Library.clear!
+
 # An example card that includes a category requirement
 Fluxx::Card.create(type: :goal,
                    name: "Treasure Chest",
