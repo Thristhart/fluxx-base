@@ -16,7 +16,7 @@ describe Fluxx::Card::Rule do
   it "should define a new rule" do
     @player.play @play_2, @ruleset
 
-    @ruleset.criteria.must_equal @treasure_chest.goal
+    @ruleset.play_limit.must_equal 2
   end
 
   it "requires a block for behaviour" do
