@@ -23,9 +23,9 @@ class Fluxx::Card
   end
 
   def play(ruleset, player)
-    @play_behavior.call(ruleset, player) # the only thing that all card types do
+    @play_behavior.call(ruleset, player) if @play_behavior # the only thing that all card types do
   end
   def cleanup(ruleset, player)
-    @cleanup_behavior.call(ruleset, player)
+    @cleanup_behavior.call(ruleset, player) if @cleanup_behavior
   end
 end
