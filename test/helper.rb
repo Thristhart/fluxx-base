@@ -33,6 +33,11 @@ Fluxx::Card.create(type: :goal,
                    set:  'Pirate',
                    goal: { needs: [3, "Rubies", "Pearls", "Diamonds", "Emeralds"] })
 
+# Pretty basic keepers, that has a category
+Fluxx::Card.create(type: :sloop,
+                   name: 'Sloop',
+                   set: "Pirate",
+                   category: :ship)
 
 Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.", set: "Pirate")
 
