@@ -1,7 +1,7 @@
 require 'fluxx'
 class Fluxx::Player
-  attr_reader :hand
+  attr_reader :hand, :keepers, :creepers
   def initialize
-    @hand = []
+    @hand, @keepers, @creepers = [], [], []
   end
 end
