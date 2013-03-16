@@ -34,7 +34,7 @@ Fluxx::Card.create(type: :goal,
                    goal: { needs: [3, "Rubies", "Pearls", "Diamonds", "Emeralds"] })
 
 
-Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.")
+Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.", set: "Pirate")
 
 Fluxx::Card.create(type: :rule, name: 'Play 4', description: 'Play 4 cards') do |rules, player|
   rules.play_limit = 4
