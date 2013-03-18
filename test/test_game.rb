@@ -19,6 +19,9 @@ describe Fluxx::Game do
 
   it "must have at least 2 players before starting or error" do
     proc { @game.start }.must_raise Fluxx::NotEnoughPlayersError
+
+    @game.players << Fluxx::Player.new
+    proc { @game.start }.must_raise Fluxx::NotEnoughPlayersError
   end
 
   it "must have a deck before starting or error" do
