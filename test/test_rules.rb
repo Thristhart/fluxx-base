@@ -12,13 +12,6 @@ describe Fluxx::Ruleset do
     it "must have only basic rules" do
       @rules.draw_count.must_equal 1
       @rules.play_limit.must_equal 1
-    end
-
-    it "must have no modifications" do
-      @rules.modified?.must_be :==, :true
-    end
-
-    it "no other rules have been modified" do
       @rules.keeper_limit.must_equal 0
       @rules.hand_limit.must_equal 0
     end
