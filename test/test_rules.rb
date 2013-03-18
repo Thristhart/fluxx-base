@@ -35,18 +35,18 @@ describe Fluxx::Ruleset do
     end
 
     it "changes the play limit when a rule is played" do
-      @player.give play_4
-      @player.play play_4, @rules
+      @player.give @play_4
+      @player.play @play_4, @rules
 
       @rules.play_limit.must_equal 4
     end
 
     it "replaces the rule" do
-      @player.give play_2
-      @player.give play_4
+      @player.give @play_2
+      @player.give @play_4
 
-      @player.play play_4, @rules
-      @player.play play_2, @rules
+      @player.play @play_4, @rules
+      @player.play @play_2, @rules
 
       @rules.play_limit.must_equal 2
     end
@@ -69,26 +69,26 @@ describe Fluxx::Ruleset do
     end
 
     it "changes the draw limit when a rule is drawed" do
-      @player.give draw_4
-      @player.draw draw_4, @rules
+      @player.give @draw_4
+      @player.draw @draw_4, @rules
 
       @rules.draw_count.must_equal 4
     end
 
     it "replaces the rule" do
-      @player.give draw_2
-      @player.give draw_4
+      @player.give @draw_2
+      @player.give @draw_4
 
-      @player.play draw_4, @rules
-      @player.play draw_2, @rules
+      @player.play @draw_4, @rules
+      @player.play @draw_2, @rules
 
       @rules.draw_count.must_equal 2
     end
 
     it "can't draw less than 1 card" do
-      @player.give draw_0
+      @player.give @draw_0
 
-      proc { @player.play draw_0, @rules }.must_raise Fluxx::InvalidRuleError
+      proc { @player.play @draw_0, @rules }.must_raise Fluxx::InvalidRuleError
     end
   end
 
