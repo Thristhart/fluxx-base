@@ -61,4 +61,12 @@ describe Fluxx::Card do
     Fluxx::Library['Minimal'].description.must_be_nil
   end
 
+  it "can be sorted alphabetically" do
+    (@shackles <=> Fluxx::Library['Sloop']).must_equal 1
+    (Fluxx::Library['Minimal'] <=> @shackles).must_equal -1
+    (@shackles <=> @shackles).must_equal 0
+
+    [@shackles, Fluxx::Library['Sloop'], Fluxx::Library['Minimal']].sort.must_equal [Fluxx::Library['Minimal'], @shackles, Fluxx::Library['Sloop']]
+  end
+
 end
