@@ -10,7 +10,7 @@ describe Fluxx::Card::Rule do
     @play_4 = Fluxx::Library["Play 4"]
 
     @player = Fluxx::Player.new
-    @ruleset = Fluxx::Ruleset.net
+    @ruleset = Fluxx::Ruleset.new
   end
 
   it "should define a new rule" do
