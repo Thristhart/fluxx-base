@@ -50,4 +50,13 @@ describe Fluxx::Library do
   it "throws an error when it can't find the card" do
     proc { Fluxx::Library['Trollolololol'] }.must_raise Fluxx::UnknownCardError
   end
+
+  it "can select a specific set of cards" do
+    Fluxx::Library.set('Pirate').sort.must_equal [Fluxx::Library['Gems'],
+                                                  Fluxx::Library['Key Lime Pie'],
+                                                  Fluxx::Library['Munitions'],
+                                                  Fluxx::Library['Sloop'],
+                                                  Fluxx::Library['Shackles'],
+                                                  Fluxx::Library['Treasure Chest']]
+  end
 end
