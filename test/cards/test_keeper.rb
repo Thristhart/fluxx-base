@@ -19,19 +19,15 @@ describe Fluxx::Card::Keeper do
   end
 
   it "should have a defined category" do
-    @sloop.category == :ship
-  end
-
-  it "should respond to special" do
-    @sloop.respond_to? :special
+    @sloop.category.must_be :ship
   end
 
   it "should go to a player's keepers when played" do
     @sloop.play(@ruleset, @player)
-    
+
     @player.keepers.must_include @sloop
   end
-  
+
   it "can be played" do
     @sloop.play(@ruleset, @player)
     @player.keepers.must_include @sloop
