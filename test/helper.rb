@@ -6,8 +6,23 @@ require 'minitest/autorun'
 
 require 'fluxx/library'
 
-# Remove any cards the library itself loads, only use the ones we define below
+# Remove any cards the library itself loads, only use the ones we define below,
+# for testing purposes.
 Fluxx::Library.clear!
+
+# Pretty basic keepers, that has a category. NB: These need to be defined before
+# the goals, to make sure the criteria solving code succeeds.
+Fluxx::Card.create(type: :keeper, name: 'Sloop', set: "Pirate", category: :ship)
+Fluxx::Card.create(type: :keeper, name: 'Strongbox')
+Fluxx::Card.create(type: :keeper, name: 'Flintlock Pistol')
+Fluxx::Card.create(type: :keeper, name: 'Cannon')
+Fluxx::Card.create(type: :keeper, name: 'Gunpowder')
+Fluxx::Card.create(type: :keeper, name: 'Key')
+Fluxx::Card.create(type: :keeper, name: 'Limes')
+Fluxx::Card.create(type: :keeper, name: 'Rubies', catgeory: :booty)
+Fluxx::Card.create(type: :keeper, name: 'Pearls', catgeory: :booty)
+Fluxx::Card.create(type: :keeper, name: 'Diamons', catgeory: :booty)
+Fluxx::Card.create(type: :keeper, name: 'Emeralds', catgeory: :booty)
 
 # An example card that includes a category requirement
 Fluxx::Card.create(type: :goal,
@@ -32,12 +47,6 @@ Fluxx::Card.create(type: :goal,
                    name: "Gems",
                    set:  'Pirate',
                    goal: { needs: [3, "Rubies", "Pearls", "Diamonds", "Emeralds"] })
-
-# Pretty basic keepers, that has a category
-Fluxx::Card.create(type: :keeper,
-                   name: 'Sloop',
-                   set: "Pirate",
-                   category: :ship)
 
 Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.", set: "Pirate")
 
