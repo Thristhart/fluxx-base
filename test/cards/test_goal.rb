@@ -1,13 +1,12 @@
 require 'helper'
-require 'fluxx/card/keeper'
+require 'fluxx/card/goal'
 require 'fluxx/player'
 require 'fluxx/ruleset'
 require 'fluxx/library'
 
-describe Fluxx::Card::Keeper do
+describe Fluxx::Card::Goal do
   before do
     @treasure_chest = Fluxx::Library["Treasure Chest"]
-    @sloop = Fluxx::Library["Sloop"]
 
     @player = Fluxx::Player.new
     @ruleset = Fluxx::Ruleset.new
@@ -15,19 +14,7 @@ describe Fluxx::Card::Keeper do
 
   it "should be of the correct class" do
     @treasure_chest.must_be_kind_of Fluxx::Card
-    @treasure_chest.must_be_instance_of Fluxx::Card::Keeper
-  end
-
-  it "should have no default category" do
-    @captain_hat.category == nil
-  end
-
-  it "should have a defined category" do
-    @sloop.category == :ship
-  end
-
-  it "should respond to special" do
-    @sloop.respond_to? :special
+    @treasure_chest.must_be_instance_of Fluxx::Card::Goal
   end
 
   it "should define the new goal" do
@@ -41,5 +28,25 @@ describe Fluxx::Card::Keeper do
       Fluxx::Card.create(type: :goal,
                          name: "Gems")
     }.must_raise Fluxx::MissingAttributeError
+  end
+
+  it "should check if a goal can be obtained" do
+    proc {
+      Fluxx::Card.create(type: :goal,
+                         name: "Failure Test",
+                         goal: { cards: ["Doesn't exist 1", "Doesn't exist 2"] })
+    }.must_raise Fluxx::UnobtainableGoalError
+
+    proc {
+      Fluxx::Card.create(type: :goal,
+                         name: "Failure Test",
+                         goal: { needs: [1, "Doesn't exist 1", "Doesn't exist 2"] })
+    }.must_raise Fluxx::UnobtainableGoalError
+
+    proc {
+      Fluxx::Card.create(type: :goal,
+                         name: "Failure Test",
+                         goal: { either: ["Doesn't exist 1", "Doesn't exist 2"] })
+    }.must_raise Fluxx::UnobtainableGoalError
   end
 end
