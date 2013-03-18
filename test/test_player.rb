@@ -10,7 +10,7 @@ describe Fluxx::Player do
     @sloop = Fluxx::Library["Sleoop"]
   end
 
-  it "can be created with no arguments" do
+  it "can be created empty" do
     @player.hand.must_be_empty
     @player.keepers.must_be_empty
     @player.creepers.must_be_empty
@@ -18,10 +18,16 @@ describe Fluxx::Player do
 
   it "can be given a card" do
     @player.give @sloop
-    @player.hand.size.must_equal 1
+    @player.hand.must_equal [@sloop]
   end
 
-  it "given a creeper, immediately be played" do
+  it "can be given many cards" do
+    @player.give @sloop
+    @player.give @shackles
+    @player.hand.must_equal [@sloop, @shackles]
+  end
+
+  it "given a creeper which will be immediately played" do
     @player.give @creeper
     @player.hand.size.must_equal 0
     @player.creepers.size.must_equal 0
