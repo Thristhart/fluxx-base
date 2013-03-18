@@ -32,4 +32,12 @@ describe Fluxx::Player do
     @player.hand.size.must_equal 0
     @player.creepers.size.must_equal 0
   end
+
+  # Idempotent, baby!
+  it "can only be given a card once" do
+    @player.give @sloop
+    # Re-using this exception might be confusing, or not. *Shrugs*
+    proc { @player.give @sloop }.must_raise Fluxx::CardAlreadyExistsError
+    @player.hand.must_equal [@sloop]
+  end
 end
