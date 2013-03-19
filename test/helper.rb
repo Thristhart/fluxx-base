@@ -50,15 +50,9 @@ Fluxx::Card.create(type: :goal,
 
 Fluxx::Card.create(type: :creeper, name: "Shackles", description: "You can't win if you have this unless the Goal says otherwise.", set: "Pirate")
 
-Fluxx::Card.create(type: :rule, name: 'Play 4', description: 'Play 4 cards') do |rules, player|
-  rules.play_limit = 4
-end
-Fluxx::Card.create(type: :rule, name: 'Play 2', description: 'Play 2 cards') do |rules, player|
-  rules.play_limit = 2
-end
-Fluxx::Card.create(type: :rule, name: 'Play All', description: 'Play all cards in your hand') do |rules, player|
-  rules.play_limit = 0
-end
+Fluxx::Card.create(type: :rule, name: 'Play 4', description: 'Play 4 cards', mod: :play_limit, new: 4)
+Fluxx::Card.create(type: :rule, name: 'Play 2', description: 'Play 4 cards', mod: :play_limit, new: 2)
+Fluxx::Card.create(type: :rule, name: 'Play All', description: 'Play all cards', mod: :play_limit, new: 0)
 
 # The most basic card, ever. No description, no set, nothing special at all.
 Fluxx::Card.create(type: :keeper, name: 'Minimal')
