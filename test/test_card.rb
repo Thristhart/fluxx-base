@@ -39,7 +39,7 @@ describe Fluxx::Card do
     end
 
     it "can be sorted alphabetically" do
-      (@shackles <=> Fluxx::Library['Sloop']).must_equal 1
+      (Fluxx::Library['Sloop'] <=> @shackles).must_equal 1
       (Fluxx::Library['Minimal'] <=> @shackles).must_equal -1
       (@shackles <=> @shackles).must_equal 0
 
