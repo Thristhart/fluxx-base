@@ -1,5 +1,6 @@
 require 'fluxx'
 class Fluxx::Card
+  include Comparable
   def self.create(options)
     raise Fluxx::MissingAttributeError unless options[:type] && options[:name]
     
@@ -27,5 +28,9 @@ class Fluxx::Card
   end
   def cleanup(ruleset, player)
     ruleset.default @play_mod if @play_mod && @play_value
+  end
+
+  def <=>(other)
+    @name <=> other.name
   end
 end
