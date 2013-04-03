@@ -5,7 +5,7 @@ class Fluxx::Player
     @hand, @keepers, @creepers = [], [], []
   end
   def play(card, ruleset)
-    card.play self, ruleset
+    card.play ruleset, self
     @hand.delete card
   end
 end
