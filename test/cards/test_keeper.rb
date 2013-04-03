@@ -19,7 +19,7 @@ describe Fluxx::Card::Keeper do
   end
 
   it "should have a defined category" do
-    @sloop.category.must_be :ship
+    @sloop.category.must_equal :ship
   end
 
   it "should go to a player's keepers when played" do
