@@ -23,11 +23,16 @@ class Fluxx::Card::Goal < Fluxx::Card
     @known_types.each do |type|
       if(@goal[type])
        raise Fluxx::MissingAttributeError unless @goal[type].any? 
-       @goal[type].each do |requirement|
-         raise Fluxx::UnobtainableGoalError Fluxx::Library[requirement]
+       @goal[type].each_with_index do |requirement, index|
+         next if(type == :needs && requirement.is_a?(Integer) && index == 0)
+         raise Fluxx::UnobtainableGoalError unless Fluxx::Library[requirement]
        end
       end
     end
+  end
+
+  def play(ruleset, player)
+    ruleset.criteria = @goal
   end
 
 end
