@@ -24,7 +24,7 @@ class Fluxx::Card
   end
 
   def play(ruleset, player)
-    ruleset.send "#{@play_mod}=", @play_value if @play_mod and @play_value # the only thing that all card types do
+    ruleset.instance_variable_set "@" + @play_mod.to_s, @play_value if @play_mod and @play_value # the only thing that all card types do
   end
   def cleanup(ruleset, player)
     ruleset.default @play_mod if @play_mod && @play_value
