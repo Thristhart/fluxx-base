@@ -18,11 +18,4 @@ describe Fluxx::Card::Rule do
 
     @ruleset.play_limit.must_equal 2
   end
-
-  it "requires a block for behaviour" do
-    proc {
-      Fluxx::Card.create(type: :rule,
-                         name: "Play 6")
-    }.must_raise Fluxx::MissingAttributeError
-  end
 end
