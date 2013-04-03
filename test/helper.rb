@@ -21,7 +21,7 @@ Fluxx::Card.create(type: :keeper, name: 'Key')
 Fluxx::Card.create(type: :keeper, name: 'Limes')
 Fluxx::Card.create(type: :keeper, name: 'Rubies', catgeory: :booty)
 Fluxx::Card.create(type: :keeper, name: 'Pearls', catgeory: :booty)
-Fluxx::Card.create(type: :keeper, name: 'Diamons', catgeory: :booty)
+Fluxx::Card.create(type: :keeper, name: 'Diamonds', catgeory: :booty)
 Fluxx::Card.create(type: :keeper, name: 'Emeralds', catgeory: :booty)
 
 # An example card that includes a category requirement
