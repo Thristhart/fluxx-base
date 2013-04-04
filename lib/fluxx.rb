@@ -12,6 +12,7 @@ module Fluxx
 
   class MissingAttributeError < Error; end
   class CardAlreadyExistsError < Error; end
+  class UnknownCardError < Error; end
   class UnobtainableGoalError < Error; end
   class MissingDeckError < Error; end
   class NotEnoughPlayersError < Error; end
