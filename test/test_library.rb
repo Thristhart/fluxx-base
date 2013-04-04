@@ -5,13 +5,13 @@ require 'fluxx/card'
 describe Fluxx::Library do
   before do
     # Save the internal library hash before clearing it
-    @saved_library = Fluxx::Library.instance.dup
+    @saved_library = Fluxx::Library.cards.dup
     Fluxx::Library.clear!
   end
 
   after do
     # And set it again later
-    Fluxx::Library.instance = @saved_library
+    Fluxx::Library.cards = @saved_library
   end
 
   it "can fetch a card given it's name" do
@@ -52,6 +52,7 @@ describe Fluxx::Library do
   end
 
   it "can select a specific set of cards" do
+    Fluxx::Library.cards = @saved_library
     Fluxx::Library.set('Pirate').sort.must_equal [Fluxx::Library['Gems'],
                                                   Fluxx::Library['Key Lime Pie'],
                                                   Fluxx::Library['Munitions'],
