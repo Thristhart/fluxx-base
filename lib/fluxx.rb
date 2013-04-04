@@ -15,4 +15,5 @@ module Fluxx
   class UnobtainableGoalError < Error; end
   class MissingDeckError < Error; end
   class NotEnoughPlayersError < Error; end
+  class GameAlreadyStartedError < Error; end
 end
