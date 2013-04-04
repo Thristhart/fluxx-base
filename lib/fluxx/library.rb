@@ -8,7 +8,9 @@ class Fluxx::Library
     end
 
     def [](name)
-      return @@cards[name]
+      card = @@cards[name]
+      raise Fluxx::UnknownCardError unless card
+      return card
     end
 
     def clear!
