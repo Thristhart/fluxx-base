@@ -7,7 +7,7 @@ describe Fluxx::Player do
   before do
     @player = Fluxx::Player.new
     @shackles = Fluxx::Library["Shackles"]
-    @sloop = Fluxx::Library["Sleoop"]
+    @sloop = Fluxx::Library["Sloop"]
   end
 
   it "can be created empty" do
