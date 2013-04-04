@@ -14,5 +14,12 @@ class Fluxx::Library
     def clear!
       @@cards.clear
     end
+    def set(set_name)
+      result = []
+      @@cards.each do |name, card|
+        result << card if card.set == set_name
+      end
+      return result
+    end
   end
 end
