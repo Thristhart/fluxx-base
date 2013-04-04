@@ -56,8 +56,8 @@ describe Fluxx::Library do
     Fluxx::Library.set(:pirate).sort.must_equal [Fluxx::Library['Gems'],
                                                   Fluxx::Library['Key Lime Pie'],
                                                   Fluxx::Library['Munitions'],
-                                                  Fluxx::Library['Sloop'],
                                                   Fluxx::Library['Shackles'],
+                                                  Fluxx::Library['Sloop'],
                                                   Fluxx::Library['Treasure Chest']]
   end
 end
