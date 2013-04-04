@@ -24,7 +24,7 @@ describe Fluxx::Card do
     end
 
     it "has a set" do
-      @shackles.set.must_equal "Pirate"
+      @shackles.set.must_equal :pirate
     end
 
     it "returns the given description" do

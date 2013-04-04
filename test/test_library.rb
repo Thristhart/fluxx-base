@@ -41,7 +41,7 @@ describe Fluxx::Library do
     before_count = Fluxx::Library.count
     proc {
       Fluxx::Card.create(type: :goal,
-                         set:  'Pirate')
+                         set:  :pirate)
     }.must_raise Fluxx::MissingAttributeError
 
     before_count.must_equal Fluxx::Library.count
@@ -53,7 +53,7 @@ describe Fluxx::Library do
 
   it "can select a specific set of cards" do
     Fluxx::Library.cards = @saved_library
-    Fluxx::Library.set('Pirate').sort.must_equal [Fluxx::Library['Gems'],
+    Fluxx::Library.set(:pirate).sort.must_equal [Fluxx::Library['Gems'],
                                                   Fluxx::Library['Key Lime Pie'],
                                                   Fluxx::Library['Munitions'],
                                                   Fluxx::Library['Sloop'],
