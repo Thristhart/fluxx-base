@@ -23,6 +23,10 @@ class Fluxx::Library
       return result
     end
 
+    def count
+      return @@cards.count
+    end
+
     def cards
       return @@cards
     end
