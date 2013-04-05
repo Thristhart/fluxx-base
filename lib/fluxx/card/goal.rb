@@ -24,8 +24,13 @@ class Fluxx::Card::Goal < Fluxx::Card
       if(@goal[type])
        raise Fluxx::MissingAttributeError unless @goal[type].any? 
        @goal[type].each_with_index do |requirement, index|
-         next if(type == :needs && requirement.is_a?(Integer) && index == 0)
-         raise Fluxx::UnobtainableGoalError unless Fluxx::Library[requirement]
+         next if type == :needs && requirement.is_a?(Integer) && index == 0
+         
+         begin
+          card = Fluxx::Library[requirement]
+         rescue Fluxx::UnknownCardError
+          raise Fluxx::UnobtainableGoalError
+         end
        end
       end
     end
