@@ -8,4 +8,7 @@ class Fluxx::Player
     card.play ruleset, self
     @hand.delete card
   end
+  def give(card)
+    @hand << card
+  end
 end
