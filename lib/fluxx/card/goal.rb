@@ -31,6 +31,8 @@ class Fluxx::Card::Goal < Fluxx::Card
          rescue Fluxx::UnknownCardError
           raise Fluxx::UnobtainableGoalError
          end
+
+         raise Fluxx::UnobtainableGoalError unless card.is_a? Fluxx::Keeper 
        end
       end
     end
