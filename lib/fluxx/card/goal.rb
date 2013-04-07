@@ -1,5 +1,6 @@
 require 'fluxx'
 require 'fluxx/card'
+#require 'fluxx/card/keeper'
 class Fluxx::Card::Goal < Fluxx::Card
   attr_reader :goal, :categories
   def initialize(options)
@@ -32,7 +33,7 @@ class Fluxx::Card::Goal < Fluxx::Card
           raise Fluxx::UnobtainableGoalError
          end
 
-         raise Fluxx::UnobtainableGoalError unless card.is_a? Fluxx::Keeper 
+         raise Fluxx::UnobtainableGoalError unless card.is_a? Fluxx::Card::Keeper 
        end
       end
     end
