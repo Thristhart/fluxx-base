@@ -10,7 +10,7 @@ describe Fluxx::Ruleset do
     end
 
     it "must have only basic rules" do
-      @rules.draw_count.must_equal 1
+      @rules.draw_limit.must_equal 1
       @rules.play_limit.must_equal 1
       @rules.keeper_limit.must_equal 0
       @rules.hand_limit.must_equal 0
@@ -64,7 +64,7 @@ describe Fluxx::Ruleset do
       @player.give @draw_4
       @player.draw @draw_4, @rules
 
-      @rules.draw_count.must_equal 4
+      @rules.draw_limit.must_equal 4
     end
 
     it "replaces the rule" do
@@ -74,7 +74,7 @@ describe Fluxx::Ruleset do
       @player.play @draw_4, @rules
       @player.play @draw_2, @rules
 
-      @rules.draw_count.must_equal 2
+      @rules.draw_limit.must_equal 2
     end
   end
 
