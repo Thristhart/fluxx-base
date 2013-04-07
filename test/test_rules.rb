@@ -58,7 +58,6 @@ describe Fluxx::Ruleset do
 
       @draw_4 = Fluxx::Library['Draw 4']
       @draw_2 = Fluxx::Library['Draw 2']
-      @draw_all = Fluxx::Library['Draw All']
     end
 
     it "changes the draw limit when a rule is drawed" do
