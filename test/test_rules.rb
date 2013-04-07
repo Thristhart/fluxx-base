@@ -76,12 +76,6 @@ describe Fluxx::Ruleset do
 
       @rules.draw_count.must_equal 2
     end
-
-    it "can't draw less than 1 card" do
-      @player.give @draw_0
-
-      proc { @player.play @draw_0, @rules }.must_raise Fluxx::InvalidRuleError
-    end
   end
 
   describe "changing the Goal" do
