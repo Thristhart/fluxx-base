@@ -41,6 +41,7 @@ class Fluxx::Card::Goal < Fluxx::Card
 
   def play(ruleset, player)
     ruleset.criteria = @goal
+    ruleset.goal = self
   end
 
 end

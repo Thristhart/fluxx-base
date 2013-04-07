@@ -1,6 +1,6 @@
 require 'fluxx'
 class Fluxx::Ruleset
-  attr_accessor :play_limit, :draw_limit, :goal_limit, :keeper_limit, :criteria
+  attr_accessor :play_limit, :draw_limit, :goal_limit, :keeper_limit, :criteria, :goal
   def initialize
     @defaults = {
       play_limit: 1,
