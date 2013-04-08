@@ -22,21 +22,22 @@ class Fluxx::Card::Goal < Fluxx::Card
 
   def validate
     @known_types.each do |type|
-      if(@goal[type])
-       raise Fluxx::MissingAttributeError unless @goal[type].any? 
-       @goal[type].each_with_index do |requirement, index|
-         next if type == :needs && requirement.is_a?(Integer) && index == 0
-         
-         begin
-          card = Fluxx::Library[requirement]
-         rescue Fluxx::UnknownCardError
-          raise Fluxx::UnobtainableGoalError
-         end
-
-         raise Fluxx::UnobtainableGoalError unless card.is_a? Fluxx::Card::Keeper 
-       end
+      next unless @goal[type]
+      raise Fluxx::MissingAttributeError unless @goal[type].any? 
+      @goal[type].each_with_index do |requirement, index|
+        next if type == :needs && requirement.is_a?(Integer) && index == 0
+        validate_card requirement
       end
     end
+  end
+  def validate_card(requirement)
+    begin
+      card = Fluxx::Library[requirement]
+    rescue Fluxx::UnknownCardError
+      raise Fluxx::UnobtainableGoalError
+    end
+
+    raise Fluxx::UnobtainableGoalError unless card.is_a? Fluxx::Card::Keeper 
   end
 
   def play(ruleset, player)
