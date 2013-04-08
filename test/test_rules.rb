@@ -56,6 +56,7 @@ describe Fluxx::Ruleset do
   describe "modified card drawing rules" do
     before do
       @game = Fluxx::Game.new
+      @game.deck = Fluxx::Library.set(:pirate)
       @rules = @game.ruleset
       @player = Fluxx::Player.new
 
