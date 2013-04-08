@@ -15,7 +15,7 @@ class Fluxx::Game
 
   def start
     raise Fluxx::GameAlreadyStartedError if @started
-    raise Fluxx::NotEnoughPlayersError if @players.length < 2  
+    raise Fluxx::NotEnoughPlayersError if @players.length < 2
     raise Fluxx::MissingDeckError if @deck.length == 0
 
     @started = true

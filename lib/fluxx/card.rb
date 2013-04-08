@@ -3,7 +3,7 @@ class Fluxx::Card
   include Comparable
   def self.create(options)
     raise Fluxx::MissingAttributeError unless options[:type] && options[:name]
-    
+
     type = options.delete :type
     card = const_get(type.to_s.capitalize).new(options)
 

@@ -4,14 +4,14 @@ require 'open3'
 require 'bundler/setup'
 require "bump/tasks"
 
- 
+
 Rake::TestTask.new do |t|
   t.test_files = Dir.glob('test/**/test_*.rb')
   t.verbose = true
   t.ruby_opts << "-rturn"
   t.libs << 'test'
 end
- 
+
 task default: [:syntax, :test]
 
 desc 'Check syntax of all ruby files'

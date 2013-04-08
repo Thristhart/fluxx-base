@@ -25,7 +25,7 @@ describe Fluxx::Card::Goal do
   end
 
   it "requires a goal to be defined" do
-    proc { 
+    proc {
       Fluxx::Card.create(type: :goal,
                          name: "Gems")
     }.must_raise Fluxx::MissingAttributeError
