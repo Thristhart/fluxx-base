@@ -63,11 +63,14 @@ describe Fluxx::Ruleset do
       @draw_2 = Fluxx::Library['Draw 2']
     end
 
-    it "changes the draw limit when a rule is drawed" do
+    it "changes the number of cards drawn based on draw_limit" do
       @player.give @draw_4
-      @player.draw @draw_4, @rules
+      @player.play @draw_4, @rules
+      
+      @player.draw @rules
 
       @rules.draw_limit.must_equal 4
+      @player.hand.length.must_equal 4
     end
 
     it "replaces the rule" do
