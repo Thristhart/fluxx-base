@@ -9,6 +9,7 @@ class Fluxx::Player
     @hand.delete card
   end
   def give(card)
+    raise Fluxx::CardAlreadyExistsError if @hand.include? card
     @hand << card
   end
   def draw(ruleset)
