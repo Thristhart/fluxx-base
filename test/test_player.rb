@@ -28,6 +28,7 @@ describe Fluxx::Player do
   end
 
   it "given a creeper which will be immediately played" do
+    skip "Do we care about creepers right now?"
     @player.give @creeper
     @player.hand.size.must_equal 0
     @player.creepers.size.must_equal 0
