@@ -1,11 +1,13 @@
 require 'fluxx'
 
 class Fluxx::Ruleset
-  attr_accessor :play_limit, :draw_limit, :goal_limit, :keeper_limit, :hand_limit, :criteria, :goal
+  attr_accessor :play_limit, :draw_count, :goal_limit, :keeper_limit, :hand_limit, :criteria, :goal
   attr_reader :game
 
-  def initialize
-    self.defaults.each do |rule, value|
+  def initialize(game)
+    @game = game
+
+    self.class.defaults.each do |rule, value|
       send(:"#{rule}=", value)
     end
   end

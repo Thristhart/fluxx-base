@@ -24,7 +24,7 @@ class Fluxx::Player
   end
 
   def draw(ruleset)
-    ruleset.draw_limit.times do 
+    ruleset.draw_count.times do 
       card = ruleset.game.deck.pop
       give card
     end
