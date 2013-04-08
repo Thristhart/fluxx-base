@@ -38,7 +38,7 @@ describe Fluxx::Player do
   it "can only be given a card once" do
     @player.give @sloop
     # Re-using this exception might be confusing, or not. *Shrugs*
-    @player.give(@sloop).must_be_nil
+    proc { @player.give @sloop }.must_raise Fluxx::CardAlreadyExistsError
     @player.hand.must_equal [@sloop]
   end
 end
