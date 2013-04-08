@@ -12,4 +12,5 @@ group :test do
 
   # For travis & bundle exec
   gem 'rake'
+  gem 'minitest'
 end
