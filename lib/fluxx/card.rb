@@ -15,17 +15,15 @@ class Fluxx::Card
   attr_reader :name, :description, :set
 
   def initialize(options)
-    @play_mod = options[:mod]
-    @play_value = options[:new]
-
     @name = options[:name]
     @description = options[:description]
     @set = options[:set] || "Fluxx"
   end
 
   def play(ruleset, player)
-    ruleset.instance_variable_set "@" + @play_mod.to_s, @play_value if @play_mod and @play_value # the only thing that all card types do
+    raise NotImplementedError
   end
+
   def cleanup(ruleset, player)
     ruleset.default @play_mod if @play_mod && @play_value
   end
