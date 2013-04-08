@@ -17,4 +17,5 @@ module Fluxx
   class MissingDeckError < Error; end
   class NotEnoughPlayersError < Error; end
   class GameAlreadyStartedError < Error; end
+  class InvalidRuleError < Error; end
 end
