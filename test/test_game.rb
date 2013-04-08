@@ -47,4 +47,55 @@ describe Fluxx::Game do
 
     proc { @game.start }.must_raise Fluxx::GameAlreadyStartedError
   end
+
+  it "can start" do
+    @game.players << Fluxx::Player.new
+    @game.players << Fluxx::Player.new
+    @game.deck = Fluxx::Library.set(:pirate)
+
+    old_deck = @game.deck.dup
+
+    @game.start
+    @game.players.wont_be_empty
+    @game.deck.wont_be_empty
+    # Make sure the deck has been shuffled
+    @game.deck.wont_equal old_deck
+  end
+
+  it "can be reset" do
+    @game.players << Fluxx::Player.new
+    @game.players << Fluxx::Player.new
+    @game.deck = Fluxx::Library.set(:pirate)
+
+    @game.start
+    @game.reset!
+
+    @game.players.must_be_empty
+    @game.deck.must_be_empty
+  end
+
+  describe "playing a game" do
+    before do
+      # Build a quick game between 2 players
+      @game = Fluxx::Game.new
+      @game.players << Fluxx::Player.new
+      @game.players << Fluxx::Player.new
+      @game.deck = Fluxx::Library.set(:pirate)
+      @game.start
+    end
+
+    after do
+      @game.reset!
+    end
+
+    it "tracks the current turn" do
+      @game.turn.must_equal 0
+      @game.current_player.must_equal @game.players.first
+
+      @game.next_turn
+
+      @game.turn.must_equal 1
+      @game.current_player.must_equal @game.players[1]
+    end
+  end
 end
