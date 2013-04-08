@@ -19,4 +19,31 @@ describe Fluxx::Card::Rule do
 
     @ruleset.play_limit.must_equal 2
   end
+
+  it "must have a modifier and value" do
+    proc {
+      Fluxx::Card.create(type: :rule,
+                         name: 'Play 9',
+                         description: 'Invalid: Play 9 cards',
+                         modifier: :play_limit)
+    }.must_raise Fluxx::MissingAttributeError
+
+    proc {
+      Fluxx::Card.create(type: :rule,
+                         name: 'Play 9',
+                         description: 'Invalid: Play 9 cards',
+                         new: 9)
+    }.must_raise Fluxx::MissingAttributeError
+  end
+
+  it "must have a valid modifier" do
+    proc {
+      Fluxx::Card.create(type: :rule,
+                         name: 'Play 9',
+                         description: 'Invalid: Play 9 cards',
+                         # This is really 'play_limit'
+                         modifier: :play_count,
+                         new: 2)
+    }.must_raise Fluxx::MissingAttributeError
+  end
 end
