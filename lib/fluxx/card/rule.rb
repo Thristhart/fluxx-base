@@ -1,5 +1,6 @@
 require 'fluxx'
 require 'fluxx/card'
+require 'fluxx/ruleset'
 
 class Fluxx::Card::Rule < Fluxx::Card
   def initialize(options)
@@ -9,6 +10,8 @@ class Fluxx::Card::Rule < Fluxx::Card
     raise Fluxx::MissingAttributeError unless options[:new] and options[:modifier]
     @modifier = options[:modifier]
     @new_value = options[:new]
+
+    raise Fluxx::MissingAttributeError unless Fluxx::Ruleset.defaults.keys.include? options[:modifier]
   end
 
   def play(ruleset, player)
