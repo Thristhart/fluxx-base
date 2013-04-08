@@ -10,7 +10,8 @@ describe Fluxx::Card::Keeper do
     @sloop = Fluxx::Library["Sloop"]
 
     @player = Fluxx::Player.new
-    @ruleset = Fluxx::Ruleset.new
+    @game = Fluxx::Game.new
+    @ruleset = @game.ruleset
   end
 
   it "should be of the correct class" do

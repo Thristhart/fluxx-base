@@ -9,7 +9,8 @@ describe Fluxx::Card do
     before do
       @shackles = Fluxx::Library["Shackles"]
 
-      @ruleset = Fluxx::Ruleset.new
+      @game = Fluxx::Game.new
+      @ruleset = @game.ruleset
       @player = Fluxx::Player.new
     end
 

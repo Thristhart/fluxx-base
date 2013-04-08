@@ -10,7 +10,7 @@ class Fluxx::Game
     @started = false
     @deck = []
     @players = []
-    @ruleset = Fluxx::Ruleset.new()
+    @ruleset = Fluxx::Ruleset.new(self)
   end
 
   def start

@@ -6,7 +6,8 @@ require 'fluxx/card'
 describe Fluxx::Ruleset do
   describe "basic rule set" do
     before do
-      @rules = Fluxx::Ruleset.new
+      @game = Fluxx::Game.new
+      @rules = @game.ruleset
     end
 
     it "must have only basic rules" do
@@ -19,7 +20,8 @@ describe Fluxx::Ruleset do
 
   describe "modified play limit rules" do
     before do
-      @rules = Fluxx::Ruleset.new
+      @game = Fluxx::Game.new
+      @rules = @game.ruleset
       @player = Fluxx::Player.new
 
       @play_4 = Fluxx::Library['Play 4']
@@ -53,7 +55,8 @@ describe Fluxx::Ruleset do
 
   describe "modified card drawing rules" do
     before do
-      @rules = Fluxx::Ruleset.new
+      @game = Fluxx::Game.new
+      @rules = @game.ruleset
       @player = Fluxx::Player.new
 
       @draw_4 = Fluxx::Library['Draw 4']
@@ -80,7 +83,8 @@ describe Fluxx::Ruleset do
 
   describe "changing the Goal" do
     before do
-      @rules = Fluxx::Ruleset.new
+      @game = Fluxx::Game.new
+      @rules = @game.ruleset
       @player = Fluxx::Player.new
       @treasure_chest = Fluxx::Library["Treasure Chest"]
       @key_lime_pie = Fluxx::Library["Key Lime Pie"]

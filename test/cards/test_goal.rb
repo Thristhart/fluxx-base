@@ -9,7 +9,8 @@ describe Fluxx::Card::Goal do
     @treasure_chest = Fluxx::Library["Treasure Chest"]
 
     @player = Fluxx::Player.new
-    @ruleset = Fluxx::Ruleset.new
+    @game = Fluxx::Game.new
+    @ruleset = @game.ruleset
   end
 
   it "should be of the correct class" do
