@@ -17,7 +17,8 @@ class Fluxx::Ruleset
       play_limit:   1,
       draw_count:   1,
       goal_limit:   1,
-      keeper_limit: 0
+      keeper_limit: 0,
+      hand_limit:   0
     }
   end
 end
