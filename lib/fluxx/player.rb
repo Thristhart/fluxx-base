@@ -11,4 +11,10 @@ class Fluxx::Player
   def give(card)
     @hand << card
   end
+  def draw(ruleset)
+    ruleset.draw_limit.times do 
+      card = ruleset.game.deck.pop
+      give card
+    end
+  end
 end
