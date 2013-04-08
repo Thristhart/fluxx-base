@@ -1,4 +1,6 @@
 require 'fluxx'
+require 'fluxx/ruleset'
+
 class Fluxx::Game
   attr_accessor :deck, :players
   attr_reader :ruleset
