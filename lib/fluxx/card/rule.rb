@@ -7,10 +7,12 @@ class Fluxx::Card::Rule < Fluxx::Card
 
     # Must have a modifier & the new value
     raise Fluxx::MissingAttributeError unless options[:new] and options[:modifier]
+    @modifier = options[:modifier]
+    @new_value = options[:new]
   end
 
   def play(ruleset, player)
-    nil
+    ruleset.instance_variable_set "@" + @modifier.to_s, @new_value if @modifier and @new_value
   end
 
   def validate
