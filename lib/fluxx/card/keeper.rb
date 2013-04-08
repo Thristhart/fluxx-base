@@ -10,7 +10,6 @@ class Fluxx::Card::Keeper < Fluxx::Card
   end
 
   def play(ruleset, player)
-    super
     player.keepers << self
   end
 end
