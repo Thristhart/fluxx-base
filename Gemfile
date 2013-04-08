@@ -1,7 +1,15 @@
 source "https://rubygems.org"
 
-gem "turn"
+# Awesome rake tasks that manipulate the version number
 gem "bump"
 
-# Test coverage
-gem 'simplecov', :require => false, :group => :test
+group :test do
+  # Pretty colors & formatting
+  gem "turn"
+
+  # Test coverage
+  gem 'simplecov', :require => false
+
+  # For travis & bundle exec
+  gem 'rake'
+end
