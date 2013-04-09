@@ -2,7 +2,8 @@ require 'fluxx'
 require 'set'
 
 class Fluxx::Player
-  attr_reader :keepers, :creepers, :plays_this_turn
+  attr_reader :keepers, :creepers
+  attr_accessor :plays_this_turn
 
   def initialize
     @hand, @keepers, @creepers = Set.new, [], []

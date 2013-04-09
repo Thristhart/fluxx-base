@@ -44,8 +44,15 @@ class Fluxx::Game
     raise Fluxx::NotEnoughPlaysError if @current_player.hand.length > 0 && @current_player.plays_this_turn < ruleset.play_limit
     raise Fluxx::TooManyKeepersError if ruleset.keeper_limit != 0 && player.keepers.length >= ruleset.keeper_limit
 
+    # Increment the turn, move on..
     @turn += 1
+    # Reset the player's action count to 0 in preparation for the next turn
+    @current_player.plays_this_turn = 0
+
+    # Switch to the next player
     @current_player = players[(players.index(@current_player) + 1) % players.length]
+
+    # And give them the new cards
     draw_cards ruleset.draw_count, @current_player
   end
 
