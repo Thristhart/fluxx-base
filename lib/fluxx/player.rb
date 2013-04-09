@@ -2,13 +2,18 @@ require 'fluxx'
 require 'set'
 
 class Fluxx::Player
-  attr_reader :keepers, :creepers
+  attr_reader :keepers, :creepers, :plays_this_turn
 
   def initialize
     @hand, @keepers, @creepers = Set.new, [], []
+    @plays_this_turn = 0
   end
 
   def play(card, ruleset)
+    raise Fluxx::OutOfTurnError if ruleset.game.current_player != self
+    raise Fluxx::TooManyPlaysError if @plays_this_turn >= ruleset.play_limit
+
+    @plays_this_turn += 1
     card.play ruleset, self
     @hand.delete card
   end

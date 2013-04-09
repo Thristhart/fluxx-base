@@ -17,4 +17,7 @@ module Fluxx
   class TooSmallDeckError < Error; end
   class TooManyKeepersError < Error; end
   class TooLargeHandError < Error; end
+  class NotEnoughManyPlaysError < Error; end
+  class TooManyPlaysError < Error; end
+  class OutOfTurnError < Error; end
 end
