@@ -81,6 +81,7 @@ class Fluxx::Game
   end
 
   def check_winner
+    return if ruleset.goal.nil? # No goal set yet
     players.each do |player|
       goal_cards = (ruleset.goal.goal[:cards] || []).map { |card_name| Fluxx::Library[card_name] }
 
