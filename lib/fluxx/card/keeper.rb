@@ -10,6 +10,7 @@ class Fluxx::Card::Keeper < Fluxx::Card
   end
 
   def play(ruleset, player)
+    raise Fluxx::TooManyKeepersError if player.keepers.length >= ruleset.keeper_limit
     player.keepers << self
   end
 end
