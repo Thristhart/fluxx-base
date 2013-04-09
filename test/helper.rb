@@ -4,6 +4,7 @@ SimpleCov.start
 require 'minitest/spec'
 require 'minitest/autorun'
 
+require 'fluxx/card'
 require 'fluxx/library'
 
 # Remove any cards the library itself loads, only use the ones we define below,

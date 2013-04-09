@@ -32,3 +32,9 @@ class Fluxx::Card
     @name <=> other.name
   end
 end
+
+require 'fluxx/card/keeper'
+require 'fluxx/card/goal'
+require 'fluxx/card/rule'
+require 'fluxx/card/creeper'
+require 'fluxx/cards'
