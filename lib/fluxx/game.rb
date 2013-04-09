@@ -27,9 +27,13 @@ class Fluxx::Game
     @turn = 0
   end
 
+  def started?
+    @started
+  end
+
   def next_turn
     @turn += 1
-    @current_player = players[players.index(@current_player) + 1]
+    @current_player = players[(players.index(@current_player) + 1) % players.length]
   end
 
 end
