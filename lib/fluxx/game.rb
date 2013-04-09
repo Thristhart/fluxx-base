@@ -30,7 +30,7 @@ class Fluxx::Game
 
     players.each do |player|
       3.times do
-        player.give deck.pop
+        player.give deck.shift
       end
     end
   end
