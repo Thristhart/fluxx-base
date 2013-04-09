@@ -39,7 +39,7 @@ class Fluxx::Game
 
   def next_turn
     raise Fluxx::TooLargeHandError if ruleset.hand_limit != 0 && @current_player.hand.length > ruleset.hand_limit
-    raise Fluxx::NotEnoughManyPlaysError if @current_player.plays_this_turn < ruleset.play_limit
+    raise Fluxx::NotEnoughPlaysError if @current_player.plays_this_turn < ruleset.play_limit
 
     @turn += 1
     @current_player = players[(players.index(@current_player) + 1) % players.length]
