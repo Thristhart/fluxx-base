@@ -13,17 +13,17 @@ Fluxx::Library.clear!
 
 # Pretty basic keepers, that has a category. NB: These need to be defined before
 # the goals, to make sure the criteria solving code succeeds.
-Fluxx::Card.create(type: :keeper, name: 'Sloop', set: :pirate, category: :ship)
-Fluxx::Card.create(type: :keeper, name: 'Strongbox')
-Fluxx::Card.create(type: :keeper, name: 'Flintlock Pistol')
-Fluxx::Card.create(type: :keeper, name: 'Cannon')
-Fluxx::Card.create(type: :keeper, name: 'Gunpowder')
-Fluxx::Card.create(type: :keeper, name: 'Key')
-Fluxx::Card.create(type: :keeper, name: 'Limes')
-Fluxx::Card.create(type: :keeper, name: 'Rubies', catgeory: :booty)
-Fluxx::Card.create(type: :keeper, name: 'Pearls', catgeory: :booty)
-Fluxx::Card.create(type: :keeper, name: 'Diamonds', catgeory: :booty)
-Fluxx::Card.create(type: :keeper, name: 'Emeralds', catgeory: :booty)
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Sloop', set: :pirate, category: :ship)
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Strongbox')
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Flintlock Pistol')
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Cannon')
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Gunpowder')
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Key')
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Limes')
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Rubies', catgeory: :booty)
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Pearls', catgeory: :booty)
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Diamonds', catgeory: :booty)
+Fluxx::Card.create(type: :keeper, set: :pirate, name: 'Emeralds', catgeory: :booty)
 
 # An example card that includes a category requirement
 Fluxx::Card.create(type: :goal,

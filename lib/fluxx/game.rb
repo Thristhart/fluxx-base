@@ -21,7 +21,7 @@ class Fluxx::Game
     raise Fluxx::GameAlreadyStartedError if @started
     raise Fluxx::NotEnoughPlayersError if @players.length < 2
     raise Fluxx::MissingDeckError if @deck.length == 0
-    raise Fluxx::TooSmallDeckError if deck.length < (players.length * 3) + 3
+    #raise Fluxx::TooSmallDeckError if deck.length < (players.length * 3) + 3
 
     @deck.shuffle!
     @started = true
