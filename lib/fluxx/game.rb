@@ -83,13 +83,14 @@ class Fluxx::Game
   def check_winner
     return if ruleset.goal.nil? # No goal set yet
     players.each do |player|
-      goal_cards = (ruleset.goal.goal[:cards] || []).map { |card_name| Fluxx::Library[card_name] }
+      tgoal = ruleset.goal.goal.dup
+      goal_cards = (tgoal[:cards] || []).map { |card_name| Fluxx::Library[card_name] }
 
-      goal_needs = ruleset.goal.goal[:needs] || []
+      goal_needs = tgoal[:needs] || []
       goal_needs_count = goal_needs.shift || 999999999999 # XXX: This should be enough for anybody...
       goal_needs_cards = goal_needs.map { |card_name| Fluxx::Library[card_name] }
       
-      goal_either = (ruleset.goal.goal[:either] || []).map { |card_name| Fluxx::Library[card_name] }
+      goal_either = (tgoal[:either] || []).map { |card_name| Fluxx::Library[card_name] }
 
       # Checking the normal cards rule
       trial_one = (player.keepers & goal_cards).length == goal_cards.length
@@ -102,7 +103,7 @@ class Fluxx::Game
         break true if player.keepers.include? card
       end
 
-      categories = ruleset.goal.goal.dup
+      categories = tgoal.dup
       categories.delete(:either)
       categories.delete(:cards)
       categories.delete(:needs)
