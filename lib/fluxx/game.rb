@@ -14,7 +14,7 @@ class Fluxx::Game
     @deck = []
     @players = []
     @ruleset = Fluxx::Ruleset.new(self)
-    discard = []
+    @discard = []
   end
 
   def start
@@ -29,9 +29,7 @@ class Fluxx::Game
     @turn = 0
 
     players.each do |player|
-      3.times do
-        player.give deck.shift
-      end
+      draw_cards 3, player
     end
   end
 
@@ -42,6 +40,24 @@ class Fluxx::Game
   def next_turn
     @turn += 1
     @current_player = players[(players.index(@current_player) + 1) % players.length]
+    draw_cards ruleset.draw_count, @current_player
+  end
+
+  private
+
+  def draw_card(player)
+    if @deck.length == 0
+      @deck = @discard.shuffle
+      @discard = []
+    end
+
+    player.give @deck.shift
+  end
+
+  def draw_cards(count, player)
+    count.times do
+      draw_card(player)
+    end
   end
 
 end
