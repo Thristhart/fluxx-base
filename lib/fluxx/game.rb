@@ -111,10 +111,12 @@ class Fluxx::Game
 
       categories.keys.each do |category|
         count = categories[:category]
-        all_in_category = Fluxx::Library.cards.select do |card_name, card|
+        all_in_category = []
+
+        Fluxx::Library.cards.select do |card_name, card|
           next unless card.is_a? Fluxx::Card::Keeper
 
-          card.category == category
+          all_in_category << card if card.category == category
         end
 
         trial_four ||= (player.keepers & all_in_category).length >= count
