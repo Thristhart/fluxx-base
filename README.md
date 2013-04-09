@@ -11,8 +11,8 @@ interface for users. See [fluxx-skype] for an implementation.
 
 ## See also
 
-* [MiniTest::Spec](http://www.rubyinside.com/a-minitestspec-tutorial-elegant-spec-style-testing-that-comes-with-ruby-5354.html)
-* [MiniTest reference](http://mattsears.com/articles/2011/12/10/minitest-quick-reference)
+* [MiniTest::Spec Tutorial](http://www.rubyinside.com/a-minitestspec-tutorial-elegant-spec-style-testing-that-comes-with-ruby-5354.html)
+* [MiniTest Reference](http://mattsears.com/articles/2011/12/10/minitest-quick-reference)
 
 
 [fluxx-skype]: http://example.com
