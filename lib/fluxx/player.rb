@@ -38,7 +38,7 @@ class Fluxx::Player
   end
 
   def discard(card, ruleset)
-    raise Fluxx::NotInHandError unless @hand.include? card || keepers.include? card || creepers.include? card
+    raise Fluxx::NotInHandError unless ( @hand.include? card or keepers.include? card or creepers.include? card )
     card.discard ruleset, self
     @hand.delete card
   end
