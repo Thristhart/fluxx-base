@@ -85,7 +85,7 @@ class Fluxx::Game
       goal_cards = (ruleset.goal.goal[:cards] || []).map { |card_name| Fluxx::Library[card_name] }
 
       goal_needs = ruleset.goal.goal[:needs] || []
-      goal_needs_count = goal_needs.shift
+      goal_needs_count = goal_needs.shift || 999999999999 # XXX: This should be enough for anybody...
       goal_needs_cards = goal_needs.map { |card_name| Fluxx::Library[card_name] }
       
       goal_either = (ruleset.goal.goal[:either] || []).map { |card_name| Fluxx::Library[card_name] }
