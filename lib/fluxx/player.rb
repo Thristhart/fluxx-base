@@ -29,4 +29,9 @@ class Fluxx::Player
       give card
     end
   end
+
+  def discard(card, ruleset)
+    card.discard ruleset, self
+    @hand.delete card
+  end
 end

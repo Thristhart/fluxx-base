@@ -15,10 +15,10 @@ class Fluxx::Card::Rule < Fluxx::Card
   end
 
   def play(ruleset, player)
-    ruleset.instance_variable_set "@" + @modifier.to_s, @new_value if @modifier and @new_value
+    ruleset.instance_variable_set "@" + @modifier.to_s, @new_value
   end
 
-  def validate
-    #
+  def discard(ruleset, player)
+    ruleset.instance_variable_set "@" + @modifier.to_s, Fluxx::Ruleset.defaults[@modifier]
   end
 end

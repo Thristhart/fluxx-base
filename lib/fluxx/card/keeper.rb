@@ -13,4 +13,8 @@ class Fluxx::Card::Keeper < Fluxx::Card
     raise Fluxx::TooManyKeepersError if ruleset.keeper_limit != 0 && player.keepers.length >= ruleset.keeper_limit
     player.keepers << self
   end
+
+  def discard(ruleset, player)
+    player.keepers.delete self
+  end
 end

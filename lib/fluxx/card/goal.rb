@@ -45,4 +45,9 @@ class Fluxx::Card::Goal < Fluxx::Card
     ruleset.goal = self
   end
 
+  def discard(ruleset, player)
+    ruleset.criteria = nil
+    ruleset.goal = nil
+  end
+
 end
