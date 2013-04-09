@@ -31,6 +31,8 @@ class Fluxx::Game
     players.each do |player|
       draw_cards 3, player
     end
+    # The game starts immediately, with the first player drawing their card
+    draw_cards ruleset.draw_count, @current_player
   end
 
   def started?
