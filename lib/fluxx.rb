@@ -16,4 +16,5 @@ module Fluxx
   class InvalidRuleError < Error; end
   class TooSmallDeckError < Error; end
   class TooManyKeepersError < Error; end
+  class TooLargeHandError < Error; end
 end
