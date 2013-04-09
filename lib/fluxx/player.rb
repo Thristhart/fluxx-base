@@ -12,7 +12,7 @@ class Fluxx::Player
 
   def play(card, ruleset)
     raise Fluxx::OutOfTurnError if ruleset.game.current_player != self
-    raise Fluxx::TooManyPlaysError if @plays_this_turn >= ruleset.play_limit
+    raise Fluxx::TooManyPlaysError if @plays_this_turn >= ruleset.play_limit && ruleset.play_limit != 0
     raise Fluxx::NotInHandError unless @hand.include? card
 
     @plays_this_turn += 1
