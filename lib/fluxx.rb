@@ -21,4 +21,5 @@ module Fluxx
   class TooManyPlaysError < Error; end
   class OutOfTurnError < Error; end
   class NotInHandError < Error; end
+  class YouWinError < Error; end
 end
