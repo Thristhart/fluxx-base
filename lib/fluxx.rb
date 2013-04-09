@@ -14,4 +14,5 @@ module Fluxx
   class NotEnoughPlayersError < Error; end
   class GameAlreadyStartedError < Error; end
   class InvalidRuleError < Error; end
+  class TooSmallDeckError < Error; end
 end

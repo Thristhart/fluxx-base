@@ -2,7 +2,7 @@ require 'fluxx'
 require 'fluxx/ruleset'
 
 class Fluxx::Game
-  attr_accessor :deck, :players
+  attr_accessor :deck, :players, :discard
   attr_reader :ruleset, :turn, :current_player
 
   def initialize
@@ -14,17 +14,25 @@ class Fluxx::Game
     @deck = []
     @players = []
     @ruleset = Fluxx::Ruleset.new(self)
+    discard = []
   end
 
   def start
     raise Fluxx::GameAlreadyStartedError if @started
     raise Fluxx::NotEnoughPlayersError if @players.length < 2
     raise Fluxx::MissingDeckError if @deck.length == 0
+    raise Fluxx::TooSmallDeckError if deck.length < (players.length * 3) + 3
 
     @deck.shuffle!
     @started = true
     @current_player = players.first
     @turn = 0
+
+    players.each do |player|
+      3.times do
+        player.give deck.pop
+      end
+    end
   end
 
   def started?
