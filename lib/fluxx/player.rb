@@ -13,6 +13,7 @@ class Fluxx::Player
   def play(card, ruleset)
     raise Fluxx::OutOfTurnError if ruleset.game.current_player != self
     raise Fluxx::TooManyPlaysError if @plays_this_turn >= ruleset.play_limit
+    raise Fluxx::NotInHandError unless @hand.include? card
 
     @plays_this_turn += 1
     card.play ruleset, self
@@ -37,6 +38,7 @@ class Fluxx::Player
   end
 
   def discard(card, ruleset)
+    raise Fluxx::NotInHandError unless @hand.include? card || keepers.include? card || creepers.include? card
     card.discard ruleset, self
     @hand.delete card
   end

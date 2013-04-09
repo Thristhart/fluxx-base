@@ -20,4 +20,5 @@ module Fluxx
   class NotEnoughPlaysError < Error; end
   class TooManyPlaysError < Error; end
   class OutOfTurnError < Error; end
+  class NotInHandError < Error; end
 end
