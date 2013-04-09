@@ -103,9 +103,9 @@ class Fluxx::Game
       end
 
       categories = ruleset.goal.goal.dup
-      catgeories.delete(:either)
-      catgeories.delete(:cards)
-      catgeories.delete(:needs)
+      catgoeries.delete(:either)
+      catgoeries.delete(:cards)
+      catgoeries.delete(:needs)
 
       trial_four = nil
 
