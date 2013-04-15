@@ -83,10 +83,10 @@ class Fluxx::Game
   def check_winner
     return if ruleset.goal.nil? # No goal set yet
     players.each do |player|
-      tgoal = ruleset.goal.goal.dup
+      tgoal = ruleset.goal.goal.clone
       goal_cards = (tgoal[:cards] || []).map { |card_name| Fluxx::Library[card_name] }
 
-      goal_needs = tgoal[:needs] || []
+      goal_needs = (tgoal[:needs] || []).dup
       goal_needs_count = goal_needs.shift || 999999999999 # XXX: This should be enough for anybody...
       goal_needs_cards = goal_needs.map { |card_name| Fluxx::Library[card_name] }
       
@@ -111,7 +111,7 @@ class Fluxx::Game
       trial_four = nil
 
       categories.keys.each do |category|
-        count = categories[:category]
+        count = categories[category]
         all_in_category = []
 
         Fluxx::Library.cards.select do |card_name, card|
