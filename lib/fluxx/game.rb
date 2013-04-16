@@ -124,10 +124,30 @@ class Fluxx::Game
       end
 
       if !! (
-        (trial_one unless goal_cards.empty?) ||
-        (trial_two unless goal_needs_cards.empty?) ||
-        (trial_three unless goal_either.empty?) ||
-        (trial_four unless trial_four.nil?)
+        ( # Goal type 1: cards: [Keeper 1, Keeper 2]
+          (trial_one unless goal_cards.empty?) &&
+          !(trial_two unless goal_needs_cards.empty?) &&
+          !(trial_three unless goal_either.empty?) &&
+          !(trial_four unless trial_four.nil?)
+        ) ||
+        ( # Goal type 2: needs x of [Keepers]
+          !(trial_one unless goal_cards.empty?) &&
+          (trial_two unless goal_needs_cards.empty?) &&
+          !(trial_three unless goal_either.empty?) &&
+          !(trial_four unless trial_four.nil?)
+        ) ||
+        ( # Goal type 3: either Keeper 1 or Keeper 2
+          !(trial_one unless goal_cards.empty?) &&
+          !(trial_two unless goal_needs_cards.empty?) &&
+          (trial_three unless goal_either.empty?) &&
+          !(trial_four unless trial_four.nil?)
+        ) ||
+        ( # Goal type 4: X number of <category> and [Keeper]
+          (trial_one unless goal_cards.empty?) &&
+          !(trial_two unless goal_needs_cards.empty?) &&
+          !(trial_three unless goal_either.empty?) &&
+          (trial_four unless trial_four.nil?)
+        )
       )
         @winner = player
         raise Fluxx::YouWinError
