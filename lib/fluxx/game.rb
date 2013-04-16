@@ -123,12 +123,15 @@ class Fluxx::Game
         trial_four ||= (player.keepers & all_in_category).length >= count
       end
 
-      raise Fluxx::YouWinError if !! (
+      if !! (
         (trial_one unless goal_cards.empty?) ||
         (trial_two unless goal_needs_cards.empty?) ||
         (trial_three unless goal_either.empty?) ||
         (trial_four unless trial_four.nil?)
       )
+        @winner = player
+        raise Fluxx::YouWinError
+      end
     end
   end
 
