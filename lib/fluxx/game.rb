@@ -48,7 +48,7 @@ class Fluxx::Game
     else
       raise Fluxx::NotEnoughPlaysError if @current_player.plays_this_turn < ruleset.play_limit
     end
-    raise Fluxx::TooManyKeepersError if ruleset.keeper_limit != 0 && player.keepers.length >= ruleset.keeper_limit
+    raise Fluxx::TooManyKeepersError if ruleset.keeper_limit != 0 && @current_player.keepers.length >= ruleset.keeper_limit
     check_winner
 
     # Increment the turn, move on..
