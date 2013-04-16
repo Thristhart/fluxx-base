@@ -124,9 +124,9 @@ class Fluxx::Game
       end
 
       raise Fluxx::YouWinError if !! (
-        (trial_one unless goal_cards.empty?) &&
-        (trial_two unless goal_needs_cards.empty?) &&
-        (trial_three unless goal_either.empty) &&
+        (trial_one unless goal_cards.empty?) ||
+        (trial_two unless goal_needs_cards.empty?) ||
+        (trial_three unless goal_either.empty?) ||
         (trial_four unless trial_four.nil?)
       )
     end
